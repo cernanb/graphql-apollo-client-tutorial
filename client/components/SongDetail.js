@@ -2,18 +2,18 @@ import React, { Component } from 'react'
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import query from '../queries/fetchSong'
+import { Link } from 'react-router'
 
 class SongDetail extends Component {
   render() {
     const { song } = this.props.data
-    console.log(this.props)
-    if (this.props.data.loading) {
-      return <div>Loading</div>
+    if (!song) {
+      return <div />
     }
     return (
-      <div>
-        <h3>Song Detail</h3>
-        {song.title}
+      <div className="container">
+        <Link to="/">Back</Link>
+        <h3>{song.title}</h3>
       </div>
     )
   }
